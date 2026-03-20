@@ -212,6 +212,13 @@ img {
   visibility: hidden; /* dimensiona il contenitore, la maschera fa il resto */
 }
 
+/* ===== SCROLL OFFSET per navbar fissa ===== */
+#progetti,
+#chi-siamo,
+#contatti {
+  scroll-margin-top: 72px;
+}
+
 /* ===== SEZIONE PROGETTI ===== */
 .progetti {
   min-height: 100vh;
