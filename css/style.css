@@ -164,7 +164,7 @@ img {
 
 .hero__subtitle {
   font-family: var(--font-main);
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-size: clamp(1.1rem, 2.2vw, 1.6rem);
   color: var(--soft-black);
   opacity: 0.6;
   position: relative;
@@ -174,7 +174,7 @@ img {
 
 .hero__bg {
   position: absolute;
-  bottom: -15%;
+  bottom: -35%;
   left: -5%;
   width: 120vw;
   z-index: 1;
