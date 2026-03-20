@@ -368,11 +368,34 @@ img {
   text-align: right;
 }
 
+.progetti__detail-subtitle {
+  font-size: 0.9rem;
+  font-style: italic;
+  opacity: 0.65;
+  margin-top: -0.5rem;
+}
+
+.progetti__detail-field {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  opacity: 0.8;
+}
+
+.progetti__detail-label {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 0.2rem;
+}
+
 .progetti__detail-desc {
   font-size: 0.95rem;
-  line-height: 1.6;
-  opacity: 0.85;
-  max-width: 520px;
+  line-height: 1.65;
+  opacity: 0.9;
+  border-top: 1px solid rgba(245,240,232,0.15);
+  padding-top: 1rem;
 }
 
 /* ===== CHI SIAMO ===== */
