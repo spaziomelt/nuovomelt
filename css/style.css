@@ -164,17 +164,19 @@ img {
 
 .hero__subtitle {
   font-family: var(--font-main);
-  font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
   color: var(--soft-black);
-  opacity: 0.6;
+  opacity: 0.75;
   position: relative;
   z-index: 2;
-  font-style: italic;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .hero__bg {
   position: absolute;
-  bottom: -35%;
+  bottom: -65%;
   left: -5%;
   width: 120vw;
   z-index: 1;
