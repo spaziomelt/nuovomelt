@@ -364,7 +364,7 @@ img {
   justify-content: space-between;
   align-items: baseline;
   font-family: var(--font-body);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   opacity: 0.85;
 }
 
@@ -388,15 +388,15 @@ img {
 
 .progetti__detail-field {
   font-family: var(--font-body);
-  font-size: 1.05rem;
-  line-height: 1.6;
+  font-size: 1.15rem;
+  line-height: 1.65;
   opacity: 0.85;
 }
 
 .progetti__detail-label {
   display: block;
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   opacity: 0.5;
@@ -405,8 +405,8 @@ img {
 
 .progetti__detail-desc {
   font-family: var(--font-body);
-  font-size: 1.05rem;
-  line-height: 1.7;
+  font-size: 1.15rem;
+  line-height: 1.75;
   opacity: 0.9;
 }
 

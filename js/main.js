@@ -7,6 +7,7 @@ const projects = [
     venue: 'Arzano, città metropolitana di Napoli',
     regia: null,
     poster: null,
+    noPoster: true,
     tipologia: "Performance teatrale in forma di saggio scenico. Due interpreti alternano l'esecuzione di scene tratte dal repertorio di Eduardo De Filippo — Natale in Casa Cupiello e Napoli Milionaria! — a momenti di riflessione critica condotti direttamente in scena, in dialogo con il pubblico.",
     contenuto: "Il lavoro interroga la contemporaneità del teatro eduardiano: la distanza tra illusione e realtà nelle dinamiche familiari napoletane, la subalternità femminile, la disuguaglianza sociale come condizione strutturale. Il formato ibrido — che mescola rappresentazione e analisi — trasforma lo spettacolo in un dispositivo critico, capace di mettere a confronto il testo novecentesco con le contraddizioni del presente.",
     obiettivi: "Il progetto si è inserito in un contesto territoriale specifico, rivolto a un pubblico di comunità. L'obiettivo era quello di riattivare il patrimonio culturale eduardiano non come omaggio nostalgico ma come strumento di lettura critica del contemporaneo, restituendo al pubblico locale un'identità culturale rielaborata e interrogata."
@@ -29,6 +30,7 @@ const projects = [
     venue: 'Location variabile',
     regia: null,
     poster: null,
+    noPoster: true,
     tipologia: "Performance teatrale site-specific per contesti celebrativi. Tre personaggi del folklore napoletano — la Bella 'Mbriana, il Munaciello, Fabrizio Carafa (nobile napoletano del XVI secolo) — animano l'evento con monologhi, scene interattive e dispositivi di coinvolgimento del pubblico (caccia agli indizi, lettera d'amore da completare, tombola, gioco del telefono, puzzle, caccia al tesoro).",
     contenuto: "Il progetto rilegge tre figure del repertorio leggendario napoletano attraverso il filtro dell'amore: la Bella 'Mbriana come allegoria dell'amore-ossessione e della perdita; il Munaciello come incarnazione dell'amore come capriccio e sorpresa; Fabrizio Carafa come voce dell'amore eroico e tragico nella cornice storica del Cinquecento italiano. Le tre figure costruiscono, insieme, una riflessione plurale sul vincolo amoroso, declinata in chiave festiva e partecipativa.",
     obiettivi: "Il progetto si colloca nella fascia della produzione teatrale su committenza privata, con l'obiettivo di elevare il formato dell'animazione degli eventi attraverso drammaturgia originale, ricerca culturale e coinvolgimento autentico del pubblico. Costituisce un modello di sostenibilità economica per il collettivo, capace di integrare qualità artistica e adattabilità ai contesti."
@@ -84,14 +86,16 @@ function renderDetail(index) {
   const p = projects[index];
   const detail = document.getElementById('progettiDetail');
 
-  const posterHTML = p.poster
-    ? `<img class="progetti__detail-poster" src="${p.poster}" alt="${p.title}">`
-    : `<div class="progetti__detail-poster" style="
-        width:100%;height:260px;border-radius:2px;
-        background:rgba(245,240,232,0.08);
-        display:flex;align-items:center;justify-content:center;
-        color:var(--warm-white);opacity:0.3;font-size:0.85rem;
-      ">Locandina in arrivo</div>`;
+  const posterHTML = p.noPoster
+    ? ''
+    : p.poster
+      ? `<img class="progetti__detail-poster" src="${p.poster}" alt="${p.title}">`
+      : `<div class="progetti__detail-poster" style="
+          width:100%;height:260px;border-radius:2px;
+          background:rgba(245,240,232,0.08);
+          display:flex;align-items:center;justify-content:center;
+          color:var(--warm-white);opacity:0.3;font-size:0.85rem;
+        ">Locandina in arrivo</div>`;
 
   const subtitleHTML = p.subtitle
     ? `<p class="progetti__detail-subtitle">${p.subtitle}</p>` : '';
