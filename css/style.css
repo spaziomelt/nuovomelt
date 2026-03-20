@@ -179,11 +179,21 @@ img {
   max-width: 1100px;
   z-index: 1;
   pointer-events: none;
+  /* Usa l'immagine come maschera e mostra il colore Melt Blue */
+  background-color: var(--melt-blue);
+  -webkit-mask-image: url('../assets/images/sfondo-m.png');
+  mask-image: url('../assets/images/sfondo-m.png');
+  -webkit-mask-size: 100% auto;
+  mask-size: 100% auto;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: top left;
+  mask-position: top left;
 }
 
 .hero__bg img {
   width: 100%;
-  /* Immagine già colorata correttamente — nessun filtro */
+  visibility: hidden; /* dimensiona il contenitore, la maschera fa il resto */
 }
 
 /* ===== SEZIONE PROGETTI ===== */
@@ -570,6 +580,8 @@ img {
     transform: translateX(-38%);
     width: 160%;
     max-width: none;
+    -webkit-mask-size: 100% auto;
+    mask-size: 100% auto;
   }
 
   .navbar {
