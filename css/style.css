@@ -557,7 +557,20 @@ img {
 
 @media (max-width: 600px) {
   .hero__slogan {
-    font-size: clamp(1.6rem, 7vw, 2.5rem);
+    font-size: clamp(2.2rem, 10vw, 3.2rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1rem;
+  }
+
+  .hero__bg {
+    bottom: -5%;
+    left: 50%;
+    transform: translateX(-38%);
+    width: 160%;
+    max-width: none;
   }
 
   .navbar {
