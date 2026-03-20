@@ -42,6 +42,8 @@ body {
   background-color: var(--warm-white);
   color: var(--soft-black);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -146,10 +148,10 @@ img {
 
 .hero__slogan {
   font-family: var(--font-main);
-  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-size: clamp(2.8rem, 8.5vw, 7rem);
   color: var(--melt-blue);
   line-height: 1.05;
-  max-width: 1100px;
+  max-width: 1300px;
   margin-bottom: 1rem;
   position: relative;
   z-index: 2;
@@ -172,11 +174,9 @@ img {
 
 .hero__bg {
   position: absolute;
-  bottom: -18%;
-  left: 50%;
-  transform: translateX(-40%);
-  width: 85%;
-  max-width: 1100px;
+  bottom: -15%;
+  left: -5%;
+  width: 120vw;
   z-index: 1;
   pointer-events: none;
   /* Usa l'immagine come maschera e mostra il colore Melt Blue */
@@ -576,10 +576,8 @@ img {
 
   .hero__bg {
     bottom: -5%;
-    left: 50%;
-    transform: translateX(-38%);
-    width: 160%;
-    max-width: none;
+    left: -10%;
+    width: 150vw;
     -webkit-mask-size: 100% auto;
     mask-size: 100% auto;
   }
