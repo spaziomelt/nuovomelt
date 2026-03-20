@@ -1,36 +1,53 @@
 // ===== PROJECTS DATA =====
 const projects = [
   {
-    title: 'Bella Mbriana',
+    title: 'Eduardo e Noi',
     date: '2026',
-    time: 'Ore 21:00',
-    venue: 'Casa Donati',
+    venue: 'Arzano, Napoli',
     poster: null,
-    description: 'Uno spettacolo che esplora le radici della tradizione napoletana, tra mito e contemporaneità. La Bella Mbriana, spirito protettore della casa, prende vita in una performance che intreccia parola, corpo e musica.'
+    description: "Due interpreti alternano scene tratte da Eduardo De Filippo — Natale in Casa Cupiello e Napoli Milionaria! — a momenti di riflessione critica condotti direttamente in scena, in dialogo con il pubblico. Un dispositivo ibrido che mette a confronto il teatro novecentesco con le contraddizioni del presente."
   },
   {
-    title: 'Tutte le cose più belle',
-    date: '2026',
-    time: 'Ore 21:00',
-    venue: 'Casa Donati',
+    title: 'Tutte le Cose Più Belle',
+    date: '2025',
+    venue: 'Spazi non convenzionali',
     poster: null,
-    description: 'Un viaggio intimo e collettivo attraverso le cose che ci rendono vivi. Uno spettacolo partecipativo dove il pubblico diventa parte della narrazione, costruendo insieme il racconto della bellezza quotidiana.'
+    description: "Un bambino inizia a compilare una lista di tutte le cose belle del mondo per aiutare la madre a ritrovare il desiderio di vivere. Teatro interattivo tra ironia e intimità: il pubblico legge, interpreta, reagisce. I temi della depressione e del suicidio affrontati con delicatezza e senza retorica."
   },
   {
-    title: "Frammenti d'amore",
-    date: '2026',
-    time: 'Ore 21:00',
-    venue: 'Casa Donati',
+    title: 'Leggende Napoletane',
+    date: '2025',
+    venue: 'Location variabile',
     poster: null,
-    description: "Frammenti, schegge, pezzi di storie d'amore raccolte e restituite al pubblico. Una performance che indaga le forme dell'amore — quello che resta, quello che cambia, quello che ci trasforma."
+    description: "Tre figure del folklore napoletano — la Bella 'Mbriana, il Munaciello, Fabrizio Carafa — animano eventi con monologhi, scene interattive e giochi di coinvolgimento del pubblico. Una riflessione plurale sul vincolo amoroso in chiave festiva e partecipativa."
+  },
+  {
+    title: "Frammenti d'Amore",
+    date: '2025',
+    venue: 'Appartamento privato, Napoli',
+    poster: null,
+    description: "Due attori — una coppia nella vita e sul palco — si trovano a fare i conti con una crisi silenziosa. Uno spettacolo immersivo in appartamento dove l'amore è restituito come accumulo di frammenti, con il pubblico immerso fisicamente senza la mediazione della distanza scenica."
+  },
+  {
+    title: "Bella 'Mbriana",
+    date: '2024',
+    venue: 'Casa Donelli, Napoli',
+    poster: null,
+    description: "Evento teatrale immersivo in spazio domestico a stazioni. Il pubblico attraversa la casa guidato dalla Bella 'Mbriana — spirito protettore della tradizione napoletana — tra performance fisiche, monologhi e momenti di partecipazione attiva."
+  },
+  {
+    title: 'Amore e altri Racconti',
+    date: '2024',
+    venue: 'Villa Floridiana, Napoli',
+    poster: null,
+    description: "Quattro voci della letteratura del Novecento — Carver, Camus, Campanile, Barthes — in dialogo attorno a un'unica domanda: cosa si intende per amore? Una lettura scenica in spazio aperto, tra ironia, intimità e leggerezza."
   },
   {
     title: 'Amore Molesto',
-    date: '2026',
-    time: 'Ore 21:00',
-    venue: 'Casa Donati',
+    date: '2023',
+    venue: 'Teatro Arcas, Napoli',
     poster: null,
-    description: "Liberamente ispirato all'opera di Elena Ferrante. Un racconto che attraversa Napoli, la memoria e il corpo, esplorando il confine sottile tra amore e violenza, tra protezione e possesso."
+    description: "Delia apprende della morte della madre e torna nella città natale per ricostruirne gli ultimi giorni. Un viaggio interiore tra infanzia, violenza familiare e memoria rimossa. Drammaturgia originale ispirata all'universo letterario di Elena Ferrante."
   }
 ];
 
@@ -59,7 +76,6 @@ function renderDetail(index) {
       <div class="progetti__detail-meta">
         <div class="progetti__detail-meta-left">
           <span>${p.date}</span>
-          <span>${p.time}</span>
         </div>
         <div class="progetti__detail-meta-right">
           <span>${p.venue}</span>
