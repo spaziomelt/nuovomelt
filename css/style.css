@@ -174,9 +174,23 @@ img {
   letter-spacing: 0.02em;
 }
 
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 55%;
+  background: radial-gradient(ellipse at center, rgba(11, 45, 138, 0.13) 0%, rgba(11, 45, 138, 0.04) 55%, transparent 75%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .hero__bg {
   position: absolute;
-  bottom: -65%;
+  bottom: -75%;
   left: -5%;
   width: 120vw;
   z-index: 1;
