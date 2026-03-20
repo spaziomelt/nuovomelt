@@ -2,7 +2,7 @@
 const projects = [
   {
     title: 'Bella Mbriana',
-    date: 'Mar 9 Dicembre',
+    date: '2026',
     time: 'Ore 21:00',
     venue: 'Casa Donati',
     poster: null,
@@ -10,7 +10,7 @@ const projects = [
   },
   {
     title: 'Tutte le cose più belle',
-    date: 'Sab 13 Dicembre',
+    date: '2026',
     time: 'Ore 21:00',
     venue: 'Casa Donati',
     poster: null,
@@ -18,7 +18,7 @@ const projects = [
   },
   {
     title: "Frammenti d'amore",
-    date: 'Mar 16 Dicembre',
+    date: '2026',
     time: 'Ore 21:00',
     venue: 'Casa Donati',
     poster: null,
@@ -26,7 +26,7 @@ const projects = [
   },
   {
     title: 'Amore Molesto',
-    date: 'Mar 30 Dicembre',
+    date: '2026',
     time: 'Ore 21:00',
     venue: 'Casa Donati',
     poster: null,
