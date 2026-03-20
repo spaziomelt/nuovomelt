@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Melt — Il teatro che piace a noi</title>
+  <meta name="description" content="Spazio Melt è un collettivo culturale attivo dal 2022. Teatro, performance e installazioni.">
+  <link rel="icon" href="assets/images/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="navbar__logo">
+      <img src="assets/images/logo.png" alt="Melt">
+    </a>
+    <div class="navbar__hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="navbar__links" id="navLinks">
+      <a href="#progetti">Progetti</a>
+      <a href="#chi-siamo">Chi siamo</a>
+      <a href="#contatti">Contatti</a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <h1 class="hero__slogan">
+      IL <span class="decorative">T</span>EATRO CHE PIACE <span class="decorative">A</span> NOI!
+      <br>QUELLO CHE COINVOLGE <span class="decorative">T</span>UTTI!
+    </h1>
+    <p class="hero__subtitle">scopri i nostri progetti!</p>
+    <div class="hero__bg">
+      <img src="assets/images/sfondo-m.png" alt="">
+    </div>
+  </section>
+
+  <!-- ===== PROGETTI ===== -->
+  <section class="progetti" id="progetti">
+    <div class="progetti__sidebar">
+      <div class="progetti__header">
+        <h2 class="progetti__title">Schedule 01.12 – 31.12</h2>
+        <p class="progetti__subtitle">Stagione 2026</p>
+      </div>
+      <div class="progetti__list" id="progettiList">
+        <div class="progetti__item active" data-index="0">
+          <span class="progetti__item-title">Bella Mbriana</span>
+          <span class="progetti__item-date">09.12.26</span>
+        </div>
+        <div class="progetti__item" data-index="1">
+          <span class="progetti__item-title">Tutte le cose più belle</span>
+          <span class="progetti__item-date">13.12.26</span>
+        </div>
+        <div class="progetti__item" data-index="2">
+          <span class="progetti__item-title">Frammenti d'amore</span>
+          <span class="progetti__item-date">16.12.26</span>
+        </div>
+        <div class="progetti__item" data-index="3">
+          <span class="progetti__item-title">Amore Molesto</span>
+          <span class="progetti__item-date">30.12.26</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="progetti__detail" id="progettiDetail">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+
+  <!-- ===== CHI SIAMO ===== -->
+  <section class="chi-siamo" id="chi-siamo">
+    <h2 class="chi-siamo__title">Chi siamo</h2>
+    <p class="chi-siamo__text">
+      Spazio Melt è un collettivo culturale attivo dal 2022. Ci occupiamo di teatro, performance e installazioni,
+      con l'obiettivo di creare esperienze che mettano al centro il pubblico. Crediamo in un teatro accessibile,
+      partecipativo, che coinvolga tutti — senza barriere, senza distanze. Melt nasce dall'idea che l'arte dal vivo
+      debba essere di tutti, e per tutti.
+    </p>
+  </section>
+
+  <!-- ===== CONTATTI ===== -->
+  <section class="contatti" id="contatti">
+    <h2 class="contatti__title">Contatti</h2>
+    <p class="contatti__intro">Per informazioni, collaborazioni o prenotazioni, scrivici.</p>
+    <p class="contatti__email"><a href="mailto:info@spaziomelt.com">info@spaziomelt.com</a></p>
+    <form class="contatti__form" action="https://formspree.io/f/PLACEHOLDER" method="POST">
+      <input type="text" name="nome" placeholder="Nome" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <textarea name="messaggio" placeholder="Messaggio" required></textarea>
+      <button type="submit">Invia</button>
+    </form>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer__logo">
+      <img src="assets/images/logo.png" alt="Melt">
+    </div>
+    <div class="footer__social">
+      <a href="#" target="_blank" rel="noopener">Instagram</a>
+      <a href="#" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <p class="footer__copy">© 2026 Spazio Melt. Tutti i diritti riservati.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
