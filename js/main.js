@@ -313,10 +313,96 @@ function initSmoothScroll() {
   });
 }
 
+// ===== SCROLL REVEAL =====
+function initScrollReveal() {
+  const reveals = document.querySelectorAll('.reveal');
+  if (!reveals.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // only once
+      }
+    });
+  }, { threshold: 0.15 });
+
+  reveals.forEach(el => observer.observe(el));
+}
+
+// ===== PARALLAX M BACKGROUND =====
+function initParallax() {
+  const heroBg = document.querySelector('.hero__bg');
+  const hero = document.querySelector('.hero');
+  if (!heroBg || !hero) return;
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const scrollY = window.scrollY;
+      const heroH = hero.offsetHeight;
+      // Only apply within hero viewport
+      if (scrollY < heroH) {
+        const offset = scrollY * 0.25;
+        heroBg.style.transform = `translateY(${-offset}px)`;
+      }
+      ticking = false;
+    });
+  });
+}
+
+// ===== BLOB FOLLOWS CURSOR IN HERO (desktop only) =====
+function initBlobCursor() {
+  // Skip on touch devices
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
+
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  const blob = hero.querySelector('::before');
+  // ::before can't be selected via JS, so we create a real element
+  const blobEl = document.createElement('div');
+  blobEl.className = 'hero__blob';
+  blobEl.setAttribute('aria-hidden', 'true');
+  hero.appendChild(blobEl);
+
+  let mouseX = 0.5, mouseY = 0.5; // normalized 0–1
+  let blobX = 0.5, blobY = 0.5;
+
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    mouseX = (e.clientX - rect.left) / rect.width;
+    mouseY = (e.clientY - rect.top) / rect.height;
+  });
+
+  hero.addEventListener('mouseleave', () => {
+    mouseX = 0.5;
+    mouseY = 0.5;
+  });
+
+  function animateBlob() {
+    // Lerp: smooth follow with lag
+    blobX += (mouseX - blobX) * 0.04;
+    blobY += (mouseY - blobY) * 0.04;
+
+    const tx = (blobX - 0.5) * 30; // max ±15% movement
+    const ty = (blobY - 0.5) * 30;
+    blobEl.style.transform = `translate(calc(-50% + ${tx}%), calc(-50% + ${ty}%))`;
+
+    requestAnimationFrame(animateBlob);
+  }
+  animateBlob();
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initHamburger();
   initProjects();
   initSmoothScroll();
+  initScrollReveal();
+  initParallax();
+  initBlobCursor();
 });
