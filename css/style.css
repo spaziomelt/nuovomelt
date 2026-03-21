@@ -2,7 +2,7 @@
 @font-face {
   font-family: 'TT Ricks';
   src: url('../assets/fonts/TT Ricks Trial Regular.ttf') format('truetype');
-  font-weight: 400;
+  font-weight: 1 999;
   font-style: normal;
   font-display: swap;
 }
@@ -10,7 +10,7 @@
 @font-face {
   font-family: 'MCGardenFolk';
   src: url('../assets/fonts/MCGardenFolk.otf') format('opentype');
-  font-weight: 400;
+  font-weight: 1 999;
   font-style: normal;
   font-display: swap;
 }
@@ -53,6 +53,14 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-synthesis: none;
+  -webkit-text-stroke: 0px transparent;
+}
+
+*, *::before, *::after {
+  font-synthesis: none;
+  -webkit-text-stroke: 0px transparent;
 }
 
 a {
