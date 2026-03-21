@@ -91,7 +91,7 @@ img {
 }
 
 .navbar__logo img {
-  height: 36px;
+  height: 48px;
   width: auto;
 }
 
@@ -102,7 +102,7 @@ img {
 
 .navbar__links a {
   font-family: var(--font-main);
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   color: var(--soft-black);
   letter-spacing: 0.03em;
   transition: color 0.2s;
@@ -173,7 +173,7 @@ img {
 
 .hero__subtitle {
   font-family: var(--font-main);
-  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
   color: var(--soft-black);
   opacity: 0.75;
   position: relative;
@@ -337,15 +337,9 @@ img {
 }
 
 .progetti__detail-logo {
-  height: 24px;
+  height: 40px;
   width: auto;
   filter: brightness(0) invert(1);
-}
-
-.progetti__detail-url {
-  font-size: 0.75rem;
-  opacity: 0.5;
-  letter-spacing: 0.02em;
 }
 
 .progetti__detail-title {
@@ -691,7 +685,7 @@ img {
 }
 
 .footer__logo img {
-  height: 30px;
+  height: 48px;
   filter: brightness(0) invert(1);
 }
 
@@ -701,7 +695,7 @@ img {
 }
 
 .footer__social a {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   color: var(--light-grey);
   transition: color 0.2s;
 }
@@ -711,7 +705,7 @@ img {
 }
 
 .footer__copy {
-  font-size: 0.8rem;
+  font-size: 1rem;
   opacity: 0.4;
 }
 

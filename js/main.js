@@ -239,7 +239,6 @@ function renderDetail(index) {
     <div class="progetti__detail-inner">
       <div class="progetti__detail-top">
         <img class="progetti__detail-logo" src="assets/images/logo.png" alt="Melt">
-        <span class="progetti__detail-url">spaziomelt.com</span>
       </div>
       <h3 class="progetti__detail-title">${p.title}</h3>
       ${subtitleHTML}
