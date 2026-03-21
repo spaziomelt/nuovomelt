@@ -113,65 +113,115 @@ const projects = [
   }
 ];
 
-// ===== BUILD GALLERY =====
-function buildGallery(media) {
+// ===== BUILD THUMBNAIL STRIP =====
+function buildThumbstrip(media) {
   if (!media || media.length === 0) return '';
 
-  const slidesHTML = media.map((item, i) => {
-    const isActive = i === 0;
+  const thumbs = media.map((item, i) => {
+    const videoClass = item.type === 'video' ? ' thumbstrip__item--video' : '';
     if (item.type === 'video') {
-      // Only first slide gets src immediately; others use data-src for lazy loading
-      const srcAttr = isActive ? `src="${item.src}"` : `data-src="${item.src}"`;
-      return `<div class="gallery__slide${isActive ? ' active' : ''}" data-index="${i}">
-        <video ${srcAttr} muted playsinline preload="none" controls></video>
+      return `<div class="thumbstrip__item${videoClass}" data-index="${i}" data-type="video" data-src="${item.src}">
+        <video src="${item.src}" muted preload="metadata"></video>
       </div>`;
     } else {
-      return `<div class="gallery__slide${isActive ? ' active' : ''}" data-index="${i}">
+      return `<div class="thumbstrip__item${videoClass}" data-index="${i}" data-type="image" data-src="${item.src}">
         <img src="${item.src}" loading="lazy" alt="">
       </div>`;
     }
   }).join('');
 
-  const navHTML = media.length > 1 ? `
-    <button class="gallery__btn gallery__btn--prev" aria-label="Precedente">&#8592;</button>
-    <button class="gallery__btn gallery__btn--next" aria-label="Successivo">&#8594;</button>
-    <span class="gallery__counter">1 / ${media.length}</span>
-  ` : `<span class="gallery__counter">1 / 1</span>`;
-
-  return `<div class="gallery">${slidesHTML}${navHTML}</div>`;
+  return `<div class="thumbstrip">${thumbs}</div>`;
 }
 
-// ===== GALLERY NAVIGATION =====
-function initGalleryNav(detailEl) {
-  const gallery = detailEl.querySelector('.gallery');
-  if (!gallery) return;
+// ===== LIGHTBOX =====
+let lightboxData = [];
+let lightboxCurrent = 0;
 
-  const slides = gallery.querySelectorAll('.gallery__slide');
-  const counter = gallery.querySelector('.gallery__counter');
-  const total = slides.length;
-  let current = 0;
+function createLightbox() {
+  if (document.getElementById('lightbox')) return;
+  const lb = document.createElement('div');
+  lb.id = 'lightbox';
+  lb.className = 'lightbox';
+  lb.innerHTML = `
+    <button class="lightbox__close" aria-label="Chiudi">&times;</button>
+    <button class="lightbox__btn lightbox__btn--prev" aria-label="Precedente">&#8592;</button>
+    <button class="lightbox__btn lightbox__btn--next" aria-label="Successivo">&#8594;</button>
+    <div class="lightbox__content"></div>
+    <span class="lightbox__counter"></span>
+  `;
+  document.body.appendChild(lb);
 
-  function goTo(index) {
-    // Pause video on current slide
-    const currentVideo = slides[current].querySelector('video');
-    if (currentVideo) currentVideo.pause();
+  // Close on X
+  lb.querySelector('.lightbox__close').addEventListener('click', closeLightbox);
+  // Close on background click
+  lb.addEventListener('click', (e) => {
+    if (e.target === lb) closeLightbox();
+  });
+  // Navigate
+  lb.querySelector('.lightbox__btn--prev').addEventListener('click', () => lightboxNav(-1));
+  lb.querySelector('.lightbox__btn--next').addEventListener('click', () => lightboxNav(1));
+  // ESC
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') lightboxNav(-1);
+    if (e.key === 'ArrowRight') lightboxNav(1);
+  });
+}
 
-    slides[current].classList.remove('active');
-    current = (index + total) % total;
-    slides[current].classList.add('active');
+function openLightbox(media, startIndex) {
+  createLightbox();
+  lightboxData = media;
+  lightboxCurrent = startIndex;
+  const lb = document.getElementById('lightbox');
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  renderLightboxSlide();
+}
 
-    // Lazy-load video src when first shown
-    const newVideo = slides[current].querySelector('video[data-src]');
-    if (newVideo) {
-      newVideo.src = newVideo.dataset.src;
-      newVideo.removeAttribute('data-src');
-    }
+function closeLightbox() {
+  const lb = document.getElementById('lightbox');
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+  // Pause any playing video
+  const vid = lb.querySelector('video');
+  if (vid) vid.pause();
+}
 
-    if (counter) counter.textContent = `${current + 1} / ${total}`;
+function lightboxNav(dir) {
+  const lb = document.getElementById('lightbox');
+  const vid = lb.querySelector('video');
+  if (vid) vid.pause();
+  lightboxCurrent = (lightboxCurrent + dir + lightboxData.length) % lightboxData.length;
+  renderLightboxSlide();
+}
+
+function renderLightboxSlide() {
+  const lb = document.getElementById('lightbox');
+  const content = lb.querySelector('.lightbox__content');
+  const counter = lb.querySelector('.lightbox__counter');
+  const item = lightboxData[lightboxCurrent];
+
+  if (item.type === 'video') {
+    content.innerHTML = `<video class="lightbox__media" src="${item.src}" muted playsinline controls autoplay></video>`;
+  } else {
+    content.innerHTML = `<img class="lightbox__media" src="${item.src}" alt="">`;
   }
+  counter.textContent = `${lightboxCurrent + 1} / ${lightboxData.length}`;
 
-  gallery.querySelector('.gallery__btn--prev')?.addEventListener('click', () => goTo(current - 1));
-  gallery.querySelector('.gallery__btn--next')?.addEventListener('click', () => goTo(current + 1));
+  // Hide arrows if only 1 item
+  lb.querySelector('.lightbox__btn--prev').style.display = lightboxData.length > 1 ? '' : 'none';
+  lb.querySelector('.lightbox__btn--next').style.display = lightboxData.length > 1 ? '' : 'none';
+}
+
+function initThumbstrip(detailEl, media) {
+  const thumbs = detailEl.querySelectorAll('.thumbstrip__item');
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      const idx = parseInt(thumb.dataset.index, 10);
+      openLightbox(media, idx);
+    });
+  });
 }
 
 // ===== RENDER PROJECT DETAIL =====
@@ -183,7 +233,7 @@ function renderDetail(index) {
     ? `<p class="progetti__detail-subtitle">${p.subtitle}</p>` : '';
   const regiaHTML = p.regia
     ? `<p class="progetti__detail-field"><span class="progetti__detail-label">Regia e drammaturgia</span>${p.regia}</p>` : '';
-  const galleryHTML = buildGallery(p.media);
+  const thumbstripHTML = buildThumbstrip(p.media);
 
   detail.innerHTML = `
     <div class="progetti__detail-inner">
@@ -201,7 +251,7 @@ function renderDetail(index) {
           <span>${p.venue}</span>
         </div>
       </div>
-      ${galleryHTML}
+      ${thumbstripHTML}
       ${regiaHTML}
       <p class="progetti__detail-field"><span class="progetti__detail-label">Tipologia</span>${p.tipologia}</p>
       <p class="progetti__detail-field"><span class="progetti__detail-label">Contenuto artistico</span>${p.contenuto}</p>
@@ -209,7 +259,9 @@ function renderDetail(index) {
     </div>
   `;
 
-  initGalleryNav(detail);
+  if (p.media && p.media.length > 0) {
+    initThumbstrip(detail, p.media);
+  }
 }
 
 // ===== PROJECT LIST CLICK =====
