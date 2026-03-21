@@ -3,24 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Melt — Il teatro che piace a noi</title>
-  <meta name="description" content="Spazio Melt è un collettivo culturale attivo dal 2022. Teatro, performance e installazioni.">
+  <title>Spazio Melt — Teatro, Performance e Cultura a Napoli</title>
+  <meta name="description" content="Spazio Melt è un collettivo culturale fondato a Napoli. Teatro immersivo, performance partecipative e installazioni. Scopri i nostri progetti: da Eduardo De Filippo al teatro in appartamento.">
+  <meta name="keywords" content="Spazio Melt, teatro Napoli, performance, teatro immersivo, collettivo culturale, Melt, spettacoli Napoli, teatro partecipativo, Eduardo De Filippo, Bella Mbriana, teatro contemporaneo Napoli">
+  <link rel="canonical" href="https://spaziomelt.com/">
+
+  <!-- Favicon -->
   <link rel="icon" href="assets/images/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/images/favicon.jpg">
+
+  <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Spazio Melt — Teatro, Performance e Cultura a Napoli">
+  <meta property="og:description" content="Collettivo culturale fondato a Napoli. Teatro immersivo, performance partecipative e installazioni. Il teatro che piace a noi, quello che coinvolge tutti.">
+  <meta property="og:url" content="https://spaziomelt.com/">
+  <meta property="og:image" content="https://spaziomelt.com/assets/images/favicon.jpg">
+  <meta property="og:site_name" content="Spazio Melt">
+  <meta property="og:locale" content="it_IT">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Spazio Melt — Teatro, Performance e Cultura a Napoli">
+  <meta name="twitter:description" content="Collettivo culturale fondato a Napoli. Teatro immersivo, performance partecipative e installazioni.">
+  <meta name="twitter:image" content="https://spaziomelt.com/assets/images/favicon.jpg">
+
   <!-- Safari/Chrome mobile status bar color -->
   <meta name="theme-color" content="#dfe3ed">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Dati strutturati JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "PerformingGroup",
+    "name": "Spazio Melt",
+    "alternateName": "Melt",
+    "description": "Spazio Melt è un collettivo culturale fondato a Napoli che lavora all'intersezione tra teatro, performance e design relazionale. Teatro immersivo, performance partecipative e installazioni.",
+    "url": "https://spaziomelt.com",
+    "email": "info@spaziomelt.com",
+    "foundingDate": "2022",
+    "foundingLocation": {
+      "@type": "Place",
+      "name": "Napoli",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Napoli",
+        "addressCountry": "IT"
+      }
+    },
+    "genre": ["Teatro immersivo", "Performance", "Teatro partecipativo", "Teatro contemporaneo"],
+    "sameAs": [],
+    "logo": "https://spaziomelt.com/assets/images/logo.png",
+    "image": "https://spaziomelt.com/assets/images/favicon.jpg"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Spazio Melt",
+    "url": "https://spaziomelt.com",
+    "description": "Sito ufficiale di Spazio Melt — collettivo culturale di teatro e performance a Napoli."
+  }
+  </script>
 </head>
 <body>
 
   <!-- ===== NAVBAR ===== -->
-  <nav class="navbar" id="navbar">
-    <a href="#" class="navbar__logo">
-      <img src="assets/images/logo.png" alt="Melt">
+  <nav class="navbar" id="navbar" aria-label="Navigazione principale">
+    <a href="#" class="navbar__logo" aria-label="Spazio Melt - Torna alla home">
+      <img src="assets/images/logo.png" alt="Logo Spazio Melt" width="48" height="48">
     </a>
-    <div class="navbar__hamburger" id="hamburger">
+    <div class="navbar__hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
       <span></span>
       <span></span>
       <span></span>
@@ -34,63 +91,63 @@
   </nav>
 
   <!-- ===== HERO ===== -->
-  <section class="hero" id="hero">
+  <header class="hero" id="hero">
     <h1 class="hero__slogan">
       <span class="hero__line">IL <span class="decorative">T</span>EATRO CHE PIACE <span class="decorative">A</span> <span class="decorative">N</span>OI!</span>
       <span class="hero__line">QUELLO CHE COIN<span class="decorative">V</span>OLGE <span class="decorative">T</span>UTTI!</span>
     </h1>
     <p class="hero__subtitle">scopri i nostri progetti!</p>
-    <div class="hero__bg">
-      <img src="assets/images/sfondo-m.png" alt="">
+    <div class="hero__bg" aria-hidden="true">
+      <img src="assets/images/sfondo-m.png" alt="" width="1200" height="800">
     </div>
-  </section>
+  </header>
 
   <!-- ===== PROGETTI ===== -->
-  <section class="progetti" id="progetti">
+  <section class="progetti" id="progetti" aria-label="I nostri progetti teatrali">
     <div class="progetti__sidebar">
       <div class="progetti__header">
         <h2 class="progetti__title">Progetti</h2>
         <p class="progetti__subtitle">Spazio Melt</p>
       </div>
-      <div class="progetti__list" id="progettiList">
-        <div class="progetti__item active" data-index="0">
+      <div class="progetti__list" id="progettiList" role="tablist" aria-label="Lista progetti">
+        <div class="progetti__item active" data-index="0" role="tab" aria-selected="true">
           <span class="progetti__item-title">Eduardo e Noi</span>
           <span class="progetti__item-date">2026</span>
         </div>
-        <div class="progetti__item" data-index="1">
+        <div class="progetti__item" data-index="1" role="tab" aria-selected="false">
           <span class="progetti__item-title">Tutte le Cose Più Belle</span>
           <span class="progetti__item-date">2025</span>
         </div>
-        <div class="progetti__item" data-index="2">
+        <div class="progetti__item" data-index="2" role="tab" aria-selected="false">
           <span class="progetti__item-title">Leggende Napoletane</span>
           <span class="progetti__item-date">2025</span>
         </div>
-        <div class="progetti__item" data-index="3">
+        <div class="progetti__item" data-index="3" role="tab" aria-selected="false">
           <span class="progetti__item-title">Frammenti d'Amore</span>
           <span class="progetti__item-date">2025</span>
         </div>
-        <div class="progetti__item" data-index="4">
+        <div class="progetti__item" data-index="4" role="tab" aria-selected="false">
           <span class="progetti__item-title">Bella 'Mbriana</span>
           <span class="progetti__item-date">2024</span>
         </div>
-        <div class="progetti__item" data-index="5">
+        <div class="progetti__item" data-index="5" role="tab" aria-selected="false">
           <span class="progetti__item-title">Amore e altri Racconti</span>
           <span class="progetti__item-date">2024</span>
         </div>
-        <div class="progetti__item" data-index="6">
+        <div class="progetti__item" data-index="6" role="tab" aria-selected="false">
           <span class="progetti__item-title">Amore Molesto</span>
           <span class="progetti__item-date">2023</span>
         </div>
       </div>
     </div>
 
-    <div class="progetti__detail" id="progettiDetail">
+    <div class="progetti__detail" id="progettiDetail" role="tabpanel" aria-label="Dettaglio progetto">
       <!-- Populated by JS -->
     </div>
   </section>
 
   <!-- ===== CHI SIAMO ===== -->
-  <section class="chi-siamo" id="chi-siamo">
+  <section class="chi-siamo" id="chi-siamo" aria-label="Chi siamo">
     <h2 class="chi-siamo__title reveal">Chi siamo</h2>
     <div class="chi-siamo__text">
       <p class="reveal reveal-delay-1">Melt è un progetto culturale fondato a Napoli che lavora all'intersezione tra teatro, performance e design relazionale. Il nome racchiude due movimenti: lo scioglimento — il gesto individuale di abbassare le difese, togliersi l'armatura — e la fusione — l'incontro collettivo tra discipline, linguaggi e persone.</p>
@@ -100,14 +157,17 @@
   </section>
 
   <!-- ===== CONTATTI ===== -->
-  <section class="contatti" id="contatti">
+  <section class="contatti" id="contatti" aria-label="Contattaci">
     <h2 class="contatti__title reveal">Contatti</h2>
     <p class="contatti__intro reveal reveal-delay-1">Per informazioni, collaborazioni o prenotazioni, scrivici.</p>
     <p class="contatti__email reveal reveal-delay-2"><a href="mailto:info@spaziomelt.com">info@spaziomelt.com</a></p>
     <form class="contatti__form reveal reveal-delay-3" action="https://formspree.io/f/xkoqbgee" method="POST">
-      <input type="text" name="nome" placeholder="Nome" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <textarea name="messaggio" placeholder="Messaggio" required></textarea>
+      <label for="nome" class="sr-only">Nome</label>
+      <input type="text" id="nome" name="nome" placeholder="Nome" required>
+      <label for="email" class="sr-only">Email</label>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+      <label for="messaggio" class="sr-only">Messaggio</label>
+      <textarea id="messaggio" name="messaggio" placeholder="Messaggio" required></textarea>
       <button type="submit">Invia</button>
     </form>
   </section>
@@ -115,13 +175,13 @@
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="footer__logo">
-      <img src="assets/images/logo.png" alt="Melt">
+      <img src="assets/images/logo.png" alt="Logo Spazio Melt" width="48" height="48">
     </div>
     <div class="footer__social">
-      <a href="#" target="_blank" rel="noopener">Instagram</a>
-      <a href="#" target="_blank" rel="noopener">Facebook</a>
+      <a href="#" target="_blank" rel="noopener" aria-label="Instagram di Spazio Melt">Instagram</a>
+      <a href="#" target="_blank" rel="noopener" aria-label="Facebook di Spazio Melt">Facebook</a>
     </div>
-    <p class="footer__copy">© 2026 Spazio Melt. Tutti i diritti riservati.</p>
+    <p class="footer__copy">&copy; 2026 Spazio Melt. Tutti i diritti riservati.</p>
   </footer>
 
   <script src="js/main.js"></script>
