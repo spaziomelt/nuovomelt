@@ -472,30 +472,6 @@ function animateCounters(dateEls) {
   });
 }
 
-// ===== NAVBAR MORPHING BACKGROUND =====
-function initNavbarMorph() {
-  const navbar = document.getElementById('navbar');
-  if (!navbar) return;
-
-  // Create morph blob element
-  const morphBlob = document.createElement('div');
-  morphBlob.className = 'navbar__morph';
-  morphBlob.setAttribute('aria-hidden', 'true');
-  navbar.appendChild(morphBlob);
-
-  let lastScrolled = false;
-  window.addEventListener('scroll', () => {
-    const isScrolled = window.scrollY > 60;
-    if (isScrolled !== lastScrolled) {
-      lastScrolled = isScrolled;
-      if (isScrolled) {
-        morphBlob.classList.add('active');
-      } else {
-        morphBlob.classList.remove('active');
-      }
-    }
-  });
-}
 
 // ===== HERO TEXT DISINTEGRATION ON SCROLL =====
 function initHeroDisintegrate() {
@@ -601,7 +577,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initParallax();
   initBlobCursor();
-  initNavbarMorph();
   initYearCounters();
   initHeroDisintegrate();
 });
