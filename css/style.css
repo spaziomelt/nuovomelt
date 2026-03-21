@@ -570,6 +570,14 @@ img {
   opacity: 0.85;
 }
 
+.chi-siamo__text p {
+  margin-bottom: 1.2rem;
+}
+
+.chi-siamo__text p:last-child {
+  margin-bottom: 0;
+}
+
 /* ===== CONTATTI ===== */
 .contatti {
   padding: 6rem 2.5rem;
