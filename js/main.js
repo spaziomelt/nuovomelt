@@ -313,7 +313,7 @@ function initHamburger() {
   });
 }
 
-// ===== SMOOTH SCROLL =====
+// ===== SMOOTH SCROLL (fallback if Lenis fails to load) =====
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
@@ -348,6 +348,9 @@ function initScrollReveal() {
 
 // ===== PARALLAX M BACKGROUND =====
 function initParallax() {
+  // Disable on mobile (parallax causes M image edge to show)
+  if (window.innerWidth <= 600) return;
+
   const heroBg = document.querySelector('.hero__bg');
   const hero = document.querySelector('.hero');
   if (!heroBg || !hero) return;
@@ -412,13 +415,178 @@ function initBlobCursor() {
   animateBlob();
 }
 
+// ===== ANIMATED YEAR COUNTER =====
+function initYearCounters() {
+  const dates = document.querySelectorAll('.progetti__item-date');
+  if (!dates.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounters(dates);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  observer.observe(document.querySelector('.progetti__list'));
+}
+
+function animateCounters(dateEls) {
+  dateEls.forEach((el, i) => {
+    const target = parseInt(el.textContent, 10);
+    if (isNaN(target)) return;
+    const start = target - 20; // count from 20 less
+    const duration = 900;
+    const delay = i * 80; // stagger each item
+    el.textContent = start;
+
+    setTimeout(() => {
+      const t0 = performance.now();
+      function tick(now) {
+        const elapsed = now - t0;
+        const progress = Math.min(elapsed / duration, 1);
+        // ease-out cubic
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(start + (target - start) * ease);
+        el.textContent = current;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }, delay);
+  });
+}
+
+// ===== NAVBAR MORPHING BACKGROUND =====
+function initNavbarMorph() {
+  const navbar = document.getElementById('navbar');
+  if (!navbar) return;
+
+  // Create morph blob element
+  const morphBlob = document.createElement('div');
+  morphBlob.className = 'navbar__morph';
+  morphBlob.setAttribute('aria-hidden', 'true');
+  navbar.appendChild(morphBlob);
+
+  let lastScrolled = false;
+  window.addEventListener('scroll', () => {
+    const isScrolled = window.scrollY > 60;
+    if (isScrolled !== lastScrolled) {
+      lastScrolled = isScrolled;
+      if (isScrolled) {
+        morphBlob.classList.add('active');
+      } else {
+        morphBlob.classList.remove('active');
+      }
+    }
+  });
+}
+
+// ===== HERO TEXT DISINTEGRATION ON SCROLL =====
+function initHeroDisintegrate() {
+  const slogan = document.querySelector('.hero__slogan');
+  const subtitle = document.querySelector('.hero__subtitle');
+  const hero = document.querySelector('.hero');
+  if (!slogan || !hero) return;
+
+  // Wrap each character of each line in a span
+  const lines = slogan.querySelectorAll('.hero__line');
+  lines.forEach(line => {
+    const html = line.innerHTML;
+    // Preserve <span class="decorative">X</span> tags, wrap everything else char by char
+    const wrapped = html.replace(/(<span[^>]*>)(.*?)(<\/span>)|([^<])/g, (match, openTag, inner, closeTag, singleChar) => {
+      if (openTag) {
+        // It's a decorative span — wrap the inner character(s)
+        const chars = inner.split('').map(c => `<span class="char">${c}</span>`).join('');
+        return `${openTag}${chars}${closeTag}`;
+      }
+      if (singleChar === ' ') return ' ';
+      if (singleChar) return `<span class="char">${singleChar}</span>`;
+      return match;
+    });
+    line.innerHTML = wrapped;
+  });
+
+  // Assign random delays to each char
+  const chars = slogan.querySelectorAll('.char');
+  chars.forEach(ch => {
+    ch.style.setProperty('--rand', (Math.random() * 0.6).toFixed(3));
+  });
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const heroH = hero.offsetHeight;
+      const scrollY = window.scrollY;
+      const progress = Math.min(Math.max(scrollY / (heroH * 0.6), 0), 1);
+
+      if (progress > 0.05) {
+        slogan.classList.add('disintegrating');
+        slogan.style.setProperty('--scroll-progress', progress);
+        if (subtitle) {
+          subtitle.style.opacity = Math.max(1 - progress * 2.5, 0);
+          subtitle.style.transform = `translateY(${progress * -20}px)`;
+        }
+      } else {
+        slogan.classList.remove('disintegrating');
+        slogan.style.removeProperty('--scroll-progress');
+        if (subtitle) {
+          subtitle.style.opacity = '';
+          subtitle.style.transform = '';
+        }
+      }
+      ticking = false;
+    });
+  });
+}
+
+// ===== LENIS SMOOTH SCROLL =====
+function initLenis() {
+  const script = document.createElement('script');
+  script.src = 'https://unpkg.com/lenis@1.1.18/dist/lenis.min.js';
+  script.onload = () => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      smoothWheel: true,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Make anchor clicks work with Lenis
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = anchor.getAttribute('href');
+        if (href === '#' || href === '#hero') {
+          lenis.scrollTo(0);
+        } else {
+          const target = document.querySelector(href);
+          if (target) lenis.scrollTo(target);
+        }
+      });
+    });
+  };
+  document.head.appendChild(script);
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initHamburger();
   initProjects();
-  initSmoothScroll();
+  initLenis();
   initScrollReveal();
   initParallax();
   initBlobCursor();
+  initNavbarMorph();
+  initYearCounters();
+  initHeroDisintegrate();
 });

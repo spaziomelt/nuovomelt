@@ -42,7 +42,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   font-size: 16px;
 }
 
@@ -86,8 +85,8 @@ img {
 }
 
 .navbar.scrolled {
-  background: rgba(245, 240, 232, 0.97);
-  backdrop-filter: blur(8px);
+  background: transparent;
+  backdrop-filter: none;
 }
 
 .navbar__logo img {
@@ -601,6 +600,44 @@ img {
   font-size: 1.15rem;
   line-height: 1.75;
   opacity: 0.9;
+}
+
+/* ===== NAVBAR MORPH BLOB ===== */
+.navbar__morph {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 100%;
+  background: rgba(245, 240, 232, 0.97);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              border-radius 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  backdrop-filter: blur(8px);
+}
+
+.navbar__morph.active {
+  width: 200%;
+  border-radius: 0;
+}
+
+/* ===== HERO TEXT DISINTEGRATION ===== */
+.hero__slogan .char {
+  display: inline-block;
+  transition: none;
+  will-change: transform, opacity, filter;
+}
+
+.hero__slogan.disintegrating .char {
+  --p: var(--scroll-progress, 0);
+  --r: var(--rand, 0);
+  opacity: calc(1 - var(--p) * (1.2 + var(--r)));
+  transform: translateY(calc(var(--p) * (-30px - var(--r) * 60px)))
+             translateX(calc(var(--p) * (var(--r) - 0.3) * 40px))
+             rotate(calc(var(--p) * (var(--r) - 0.3) * 15deg));
+  filter: blur(calc(var(--p) * var(--r) * 6px));
 }
 
 /* ===== SCROLL REVEAL ===== */
