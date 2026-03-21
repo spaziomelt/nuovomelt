@@ -130,6 +130,35 @@ img {
   color: var(--melt-blue);
 }
 
+/* Shop link with tooltip */
+.navbar__shop-link {
+  position: relative;
+  cursor: default;
+}
+
+.navbar__shop-tooltip {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--warm-white);
+  background: var(--soft-black);
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform: translateX(-50%) translateY(8px);
+}
+
+.navbar__shop-link:hover .navbar__shop-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(4px);
+}
+
 /* Hamburger */
 .navbar__hamburger {
   display: none;
@@ -773,7 +802,7 @@ img {
 }
 
 .contatti__form button {
-  font-family: var(--font-main);
+  font-family: var(--font-body);
   font-size: 1rem;
   padding: 1rem 2.5rem;
   background-color: var(--melt-blue);

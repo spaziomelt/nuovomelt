@@ -550,6 +550,7 @@ function initLenis() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', (e) => {
         e.preventDefault();
+        if (anchor.classList.contains('navbar__shop-link')) return;
         const href = anchor.getAttribute('href');
         if (href === '#' || href === '#hero') {
           lenis.scrollTo(0);
