@@ -168,18 +168,18 @@ img {
   from {
     opacity: 0;
     transform: translateY(30px);
-    filter: blur(6px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
   }
 }
 
 .hero__slogan {
   font-family: var(--font-main);
   font-size: clamp(2.8rem, 8.5vw, 7rem);
+  font-weight: 400;
+  font-synthesis: none;
   color: var(--melt-blue);
   line-height: 1.05;
   max-width: 1300px;
@@ -187,6 +187,9 @@ img {
   position: relative;
   z-index: 2;
   letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-stroke: 0px transparent;
 }
 
 .hero__line {
@@ -210,8 +213,10 @@ img {
   position: relative;
   z-index: 2;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400;
+  font-synthesis: none;
   letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
   animation: heroReveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.75s forwards;
 }
 
@@ -631,7 +636,7 @@ img {
 .hero__slogan .char {
   display: inline-block;
   transition: none;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
 }
 
 .hero__slogan.disintegrating .char {
@@ -641,7 +646,6 @@ img {
   transform: translateY(calc(var(--p) * (-30px - var(--r) * 60px)))
              translateX(calc(var(--p) * (var(--r) - 0.3) * 40px))
              rotate(calc(var(--p) * (var(--r) - 0.3) * 15deg));
-  filter: blur(calc(var(--p) * var(--r) * 6px));
 }
 
 /* ===== SCROLL REVEAL ===== */
