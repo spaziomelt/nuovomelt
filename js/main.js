@@ -279,8 +279,23 @@ function initProjects() {
 // ===== NAVBAR SCROLL =====
 function initNavbar() {
   const navbar = document.getElementById('navbar');
+  let lastScrollY = 0;
+
   window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
+    const scrollY = window.scrollY;
+    navbar.classList.toggle('scrolled', scrollY > 60);
+
+    // Hide/show navbar on mobile based on scroll direction
+    if (window.innerWidth <= 900) {
+      if (scrollY > lastScrollY && scrollY > 80) {
+        navbar.classList.add('hidden');
+      } else {
+        navbar.classList.remove('hidden');
+      }
+    } else {
+      navbar.classList.remove('hidden');
+    }
+    lastScrollY = scrollY;
   });
 
   // Logo spin on click
