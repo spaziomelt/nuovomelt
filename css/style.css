@@ -843,12 +843,12 @@ img {
 
 @media (max-width: 600px) {
   .hero__slogan {
-    font-size: clamp(2.2rem, 10vw, 3.2rem);
-    margin-bottom: 0.75rem;
+    font-size: clamp(2.8rem, 12vw, 4rem);
+    margin-bottom: 1rem;
   }
 
   .hero__subtitle {
-    font-size: 1rem;
+    font-size: clamp(1.4rem, 5vw, 1.8rem);
   }
 
   .hero__bg {
