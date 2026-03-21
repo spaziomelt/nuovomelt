@@ -20,9 +20,9 @@ const projects = [
     regia: null,
     media: [
       { type: 'image', src: 'assets/media/tutte-le-cose-piu-belle/1.jpg' },
-      { type: 'video', src: 'assets/media/tutte-le-cose-piu-belle/2.mp4' },
+      { type: 'video', src: 'assets/media/tutte-le-cose-piu-belle/2.mp4', thumb: 'assets/media/tutte-le-cose-piu-belle/2-thumb.jpg' },
       { type: 'image', src: 'assets/media/tutte-le-cose-piu-belle/3.jpg' },
-      { type: 'video', src: 'assets/media/tutte-le-cose-piu-belle/4.mp4' },
+      { type: 'video', src: 'assets/media/tutte-le-cose-piu-belle/4.mp4', thumb: 'assets/media/tutte-le-cose-piu-belle/4-thumb.jpg' },
       { type: 'image', src: 'assets/media/tutte-le-cose-piu-belle/5.jpg' }
     ],
     tipologia: "Teatro interattivo con struttura ispirata al format stand-up. Due interpreti al centro, pubblico disposto in cerchio o semicerchio. Il pubblico è parte attiva della narrazione: legge numeri della lista, interpreta brevemente piccoli ruoli, risponde, reagisce. La produzione è progettata per spazi non convenzionali e non richiede attrezzatura tecnica complessa.",
@@ -48,9 +48,9 @@ const projects = [
     venue: 'Spazio domestico (appartamento privato), Napoli',
     regia: null,
     media: [
-      { type: 'video', src: 'assets/media/frammenti-damore/1.mp4' },
+      { type: 'video', src: 'assets/media/frammenti-damore/1.mp4', thumb: 'assets/media/frammenti-damore/1-thumb.jpg' },
       { type: 'image', src: 'assets/media/frammenti-damore/2.jpeg' },
-      { type: 'video', src: 'assets/media/frammenti-damore/3.mp4' },
+      { type: 'video', src: 'assets/media/frammenti-damore/3.mp4', thumb: 'assets/media/frammenti-damore/3-thumb.jpg' },
       { type: 'image', src: 'assets/media/frammenti-damore/4.jpeg' },
       { type: 'image', src: 'assets/media/frammenti-damore/5.jpg' }
     ],
@@ -66,7 +66,7 @@ const projects = [
     regia: null,
     media: [
       { type: 'image', src: 'assets/media/bella-mbriana/1.jpg' },
-      { type: 'video', src: 'assets/media/bella-mbriana/2.mp4' },
+      { type: 'video', src: 'assets/media/bella-mbriana/2.mp4', thumb: 'assets/media/bella-mbriana/2-thumb.jpg' },
       { type: 'image', src: 'assets/media/bella-mbriana/3.jpg' },
       { type: 'image', src: 'assets/media/bella-mbriana/4.jpeg' },
       { type: 'image', src: 'assets/media/bella-mbriana/5.jpeg' },
@@ -83,10 +83,10 @@ const projects = [
     venue: 'Villa Floridiana, Napoli',
     regia: null,
     media: [
-      { type: 'video', src: 'assets/media/amore-e-altri-racconti/1.mp4' },
+      { type: 'video', src: 'assets/media/amore-e-altri-racconti/1.mp4', thumb: 'assets/media/amore-e-altri-racconti/1-thumb.jpg' },
       { type: 'image', src: 'assets/media/amore-e-altri-racconti/2.jpeg' },
       { type: 'image', src: 'assets/media/amore-e-altri-racconti/3.jpeg' },
-      { type: 'video', src: 'assets/media/amore-e-altri-racconti/4.mp4' },
+      { type: 'video', src: 'assets/media/amore-e-altri-racconti/4.mp4', thumb: 'assets/media/amore-e-altri-racconti/4-thumb.jpg' },
       { type: 'image', src: 'assets/media/amore-e-altri-racconti/5.jpeg' }
     ],
     tipologia: "Spettacolo letterario e lettura scenica in spazio aperto non convenzionale. Quattro interpreti in scena. Ensemble composto da attori e con contributo drammaturgico esterno.",
@@ -102,7 +102,7 @@ const projects = [
     media: [
       { type: 'image', src: 'assets/media/amore-molesto/1.jpg' },
       { type: 'image', src: 'assets/media/amore-molesto/2.jpeg' },
-      { type: 'video', src: 'assets/media/amore-molesto/3.mp4' },
+      { type: 'video', src: 'assets/media/amore-molesto/3.mp4', thumb: 'assets/media/amore-molesto/3-thumb.jpg' },
       { type: 'image', src: 'assets/media/amore-molesto/4.jpeg' },
       { type: 'image', src: 'assets/media/amore-molesto/5.jpg' },
       { type: 'image', src: 'assets/media/amore-molesto/6.jpg' }
@@ -119,15 +119,10 @@ function buildThumbstrip(media) {
 
   const thumbs = media.map((item, i) => {
     const videoClass = item.type === 'video' ? ' thumbstrip__item--video' : '';
-    if (item.type === 'video') {
-      return `<div class="thumbstrip__item${videoClass}" data-index="${i}" data-type="video" data-src="${item.src}">
-        <video src="${item.src}" muted preload="metadata"></video>
-      </div>`;
-    } else {
-      return `<div class="thumbstrip__item${videoClass}" data-index="${i}" data-type="image" data-src="${item.src}">
-        <img src="${item.src}" loading="lazy" alt="">
-      </div>`;
-    }
+    const imgSrc = item.type === 'video' && item.thumb ? item.thumb : item.src;
+    return `<div class="thumbstrip__item${videoClass}" data-index="${i}" data-type="${item.type}" data-src="${item.src}">
+      <img src="${imgSrc}" loading="lazy" alt="">
+    </div>`;
   }).join('');
 
   return `<div class="thumbstrip">${thumbs}</div>`;
