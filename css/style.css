@@ -48,7 +48,7 @@ html {
 
 body {
   font-family: var(--font-main);
-  background-color: var(--warm-white);
+  background-color: #e0e4ee;
   color: var(--soft-black);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
