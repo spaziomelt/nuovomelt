@@ -250,9 +250,11 @@ img {
 
 .progetti__title {
   font-family: var(--font-main);
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
   color: var(--warm-white);
   margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  line-height: 1;
 }
 
 .progetti__subtitle {
@@ -285,7 +287,7 @@ img {
 
 .progetti__item-title {
   font-family: var(--font-main);
-  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
   color: var(--warm-white);
   transition: color 0.25s;
 }
@@ -393,8 +395,8 @@ img {
 .thumbstrip__item {
   position: relative;
   flex: 0 0 auto;
-  width: 90px;
-  height: 65px;
+  width: 180px;
+  height: 130px;
   border-radius: 3px;
   overflow: hidden;
   cursor: pointer;
