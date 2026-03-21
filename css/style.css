@@ -93,6 +93,11 @@ img {
 .navbar__logo img {
   height: 48px;
   width: auto;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar__logo img.spin {
+  transform: rotate(360deg);
 }
 
 .navbar__links {

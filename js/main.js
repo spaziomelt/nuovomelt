@@ -282,6 +282,17 @@ function initNavbar() {
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
   });
+
+  // Logo spin on click
+  const logoImg = navbar.querySelector('.navbar__logo img');
+  if (logoImg) {
+    navbar.querySelector('.navbar__logo').addEventListener('click', () => {
+      logoImg.classList.add('spin');
+      logoImg.addEventListener('transitionend', () => {
+        logoImg.classList.remove('spin');
+      }, { once: true });
+    });
+  }
 }
 
 // ===== HAMBURGER MENU =====
