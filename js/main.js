@@ -4,7 +4,7 @@ const projects = [
     title: 'Eduardo e Noi',
     subtitle: 'Progetto Arzano',
     date: '2026',
-    venue: 'Arzano, città metropolitana di Napoli',
+    venue: 'Arzano (NA)',
     regia: null,
     noPoster: true,
     media: [],
