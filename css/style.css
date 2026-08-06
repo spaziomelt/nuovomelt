@@ -1,7 +1,7 @@
 /* ===== FONTS ===== */
 @font-face {
-  font-family: 'TT Ricks';
-  src: url('../assets/fonts/TT Ricks Trial Regular.ttf') format('truetype');
+  font-family: 'Playfair Display';
+  src: url('../assets/fonts/PlayfairDisplay-Variable.ttf') format('truetype');
   font-weight: 1 999;
   font-style: normal;
   font-display: swap;
@@ -29,9 +29,9 @@
   --warm-white: #F5F0E8;
   --light-grey: #B5B2A6;
   --soft-black: #131A2E;
-  --font-main: 'TT Ricks', Georgia, serif;
+  --font-main: 'Playfair Display', Georgia, serif;
   --font-decorative: 'MCGardenFolk', cursive;
-  --font-body: 'ZTNature', 'TT Ricks', Georgia, serif;
+  --font-body: 'ZTNature', 'Playfair Display', Georgia, serif;
 }
 
 /* ===== RESET ===== */
