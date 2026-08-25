@@ -1,4 +1,14 @@
 /* ===== FONTS ===== */
+/* TT Ricks — licenza webfont TypeType.
+   I file NON sono nel repo: vanno messi in assets/fonts/ dopo l'acquisto.
+   Finché mancano, il fallback su Playfair Display resta attivo. */
+@font-face {
+  font-family: 'TT Ricks';
+  src: url('../assets/fonts/TTRicks-Regular.woff2') format('woff2'),
+       url('../assets/fonts/TTRicks-Regular.woff') format('woff');
+  font-display: swap;
+}
+
 @font-face {
   font-family: 'Playfair Display';
   src: url('../assets/fonts/PlayfairDisplay-Variable.ttf') format('truetype');
@@ -29,9 +39,9 @@
   --warm-white: #F5F0E8;
   --light-grey: #B5B2A6;
   --soft-black: #131A2E;
-  --font-main: 'Playfair Display', Georgia, serif;
+  --font-main: 'TT Ricks', 'Playfair Display', Georgia, serif;
   --font-decorative: 'MCGardenFolk', cursive;
-  --font-body: 'ZTNature', 'Playfair Display', Georgia, serif;
+  --font-body: 'ZTNature', 'TT Ricks', 'Playfair Display', Georgia, serif;
 }
 
 /* ===== RESET ===== */

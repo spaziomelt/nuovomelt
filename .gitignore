@@ -4,3 +4,8 @@
 !.dev.vars.example
 .env*
 !.env.example
+
+# I file trial di TT Ricks non vanno mai committati né pubblicati.
+# Solo i file della licenza acquistata (TTRicks-*.woff2) sono ammessi.
+*Trial*
+*trial*
